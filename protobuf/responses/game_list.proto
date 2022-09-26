@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/responses";
+
+package responses;
+
+import "protobuf/responses/game.proto";
+
+message GameList {
+    repeated Game Games = 1;
+}

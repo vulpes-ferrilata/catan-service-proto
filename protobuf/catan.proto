@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb";
+
+package pb;
+
+import "protobuf/requests/find_games_by_user_id.proto";
+import "protobuf/requests/get_game_by_id_by_user_id.proto";
+import "protobuf/requests/create_game.proto";
+import "protobuf/requests/join_game.proto";
+import "protobuf/requests/start_game.proto";
+import "protobuf/requests/build_settlement_and_road.proto";
+import "protobuf/requests/roll_dices.proto";
+import "protobuf/requests/move_robber.proto";
+import "protobuf/requests/end_turn.proto";
+import "protobuf/requests/build_settlement.proto";
+import "protobuf/requests/build_road.proto";
+import "protobuf/requests/upgrade_city.proto";
+import "protobuf/requests/buy_development_card.proto";
+import "protobuf/requests/toggle_resource_cards.proto";
+import "protobuf/requests/maritime_trade.proto";
+import "protobuf/requests/offer_trading.proto";
+import "protobuf/requests/confirm_trading.proto";
+import "protobuf/requests/cancel_trading.proto";
+import "protobuf/requests/play_knight_card.proto";
+import "protobuf/requests/play_road_building_card.proto";
+import "protobuf/requests/play_year_of_plenty_card.proto";
+import "protobuf/requests/play_monopoly_card.proto";
+
+import "protobuf/responses/game.proto";
+import "protobuf/responses/game_list.proto";
+import "google/protobuf/empty.proto";
+
+service Catan {
+    rpc FindGamesByUserID(requests.FindGamesByUserID) returns (responses.GameList) {}
+    rpc GetGameByIDByUserID(requests.GetGameByIDByUserID) returns (responses.Game) {}
+
+    rpc CreateGame(requests.CreateGame) returns (google.protobuf.Empty) {}
+    rpc JoinGame(requests.JoinGame) returns (google.protobuf.Empty) {}
+    rpc StartGame(requests.StartGame) returns (google.protobuf.Empty) {}
+    rpc BuildSettlementAndRoad(requests.BuildSettlementAndRoad) returns(google.protobuf.Empty) {} 
+    rpc RollDices(requests.RollDices) returns (google.protobuf.Empty) {}
+    rpc MoveRobber(requests.MoveRobber) returns (google.protobuf.Empty) {}
+    rpc EndTurn(requests.EndTurn) returns (google.protobuf.Empty) {}
+    rpc BuildSettlement(requests.BuildSettlement) returns (google.protobuf.Empty) {}
+    rpc BuildRoad(requests.BuildRoad) returns (google.protobuf.Empty) {}
+    rpc UpgradeCity(requests.UpgradeCity) returns (google.protobuf.Empty) {}
+    rpc BuyDevelopmentCard(requests.BuyDevelopmentCard) returns (google.protobuf.Empty) {}
+    rpc ToggleResourceCards(requests.ToggleResourceCards) returns (google.protobuf.Empty) {}
+    rpc MaritimeTrade(requests.MaritimeTrade) returns (google.protobuf.Empty) {}
+    rpc OfferTrading(requests.OfferTrading) returns (google.protobuf.Empty) {}
+    rpc ConfirmTrading(requests.ConfirmTrading) returns (google.protobuf.Empty) {}
+    rpc CancelTrading(requests.CancelTrading) returns (google.protobuf.Empty) {}
+    rpc PlayKnightCard(requests.PlayKnightCard) returns (google.protobuf.Empty) {}
+    rpc PlayRoadBuildingCard(requests.PlayRoadBuildingCard) returns (google.protobuf.Empty) {}
+    rpc PlayYearOfPlentyCard(requests.PlayYearOfPlentyCard) returns (google.protobuf.Empty) {}
+    rpc PlayMonopolyCard(requests.PlayMonopolyCard) returns (google.protobuf.Empty) {}
+}
