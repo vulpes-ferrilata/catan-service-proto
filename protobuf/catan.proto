@@ -19,9 +19,9 @@ import "protobuf/requests/upgrade_city.proto";
 import "protobuf/requests/buy_development_card.proto";
 import "protobuf/requests/toggle_resource_cards.proto";
 import "protobuf/requests/maritime_trade.proto";
-import "protobuf/requests/offer_trading.proto";
-import "protobuf/requests/confirm_trading.proto";
-import "protobuf/requests/cancel_trading.proto";
+import "protobuf/requests/send_trade_offer.proto";
+import "protobuf/requests/confirm_trade_offer.proto";
+import "protobuf/requests/cancel_trade_offer.proto";
 import "protobuf/requests/play_knight_card.proto";
 import "protobuf/requests/play_road_building_card.proto";
 import "protobuf/requests/play_year_of_plenty_card.proto";
@@ -48,9 +48,9 @@ service Catan {
     rpc BuyDevelopmentCard(requests.BuyDevelopmentCard) returns (google.protobuf.Empty) {}
     rpc ToggleResourceCards(requests.ToggleResourceCards) returns (google.protobuf.Empty) {}
     rpc MaritimeTrade(requests.MaritimeTrade) returns (google.protobuf.Empty) {}
-    rpc OfferTrading(requests.OfferTrading) returns (google.protobuf.Empty) {}
-    rpc ConfirmTrading(requests.ConfirmTrading) returns (google.protobuf.Empty) {}
-    rpc CancelTrading(requests.CancelTrading) returns (google.protobuf.Empty) {}
+    rpc SendTradeOffer(requests.SendTradeOffer) returns (google.protobuf.Empty) {}
+    rpc ConfirmTradeOffer(requests.ConfirmTradeOffer) returns (google.protobuf.Empty) {}
+    rpc CancelTradeOffer(requests.CancelTradeOffer) returns (google.protobuf.Empty) {}
     rpc PlayKnightCard(requests.PlayKnightCard) returns (google.protobuf.Empty) {}
     rpc PlayRoadBuildingCard(requests.PlayRoadBuildingCard) returns (google.protobuf.Empty) {}
     rpc PlayYearOfPlentyCard(requests.PlayYearOfPlentyCard) returns (google.protobuf.Empty) {}

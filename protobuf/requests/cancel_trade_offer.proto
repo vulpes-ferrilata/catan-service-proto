@@ -4,7 +4,7 @@ option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/requests
 
 package requests;
 
-message CancelTrading {
+message CancelTradeOffer {
     string GameID = 1;
     string UserID = 2;
 }

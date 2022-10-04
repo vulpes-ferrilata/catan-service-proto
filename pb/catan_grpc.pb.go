@@ -40,9 +40,9 @@ type CatanClient interface {
 	BuyDevelopmentCard(ctx context.Context, in *requests.BuyDevelopmentCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	ToggleResourceCards(ctx context.Context, in *requests.ToggleResourceCards, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	MaritimeTrade(ctx context.Context, in *requests.MaritimeTrade, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	OfferTrading(ctx context.Context, in *requests.OfferTrading, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	ConfirmTrading(ctx context.Context, in *requests.ConfirmTrading, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	CancelTrading(ctx context.Context, in *requests.CancelTrading, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	SendTradeOffer(ctx context.Context, in *requests.SendTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	ConfirmTradeOffer(ctx context.Context, in *requests.ConfirmTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	CancelTradeOffer(ctx context.Context, in *requests.CancelTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	PlayKnightCard(ctx context.Context, in *requests.PlayKnightCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	PlayRoadBuildingCard(ctx context.Context, in *requests.PlayRoadBuildingCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	PlayYearOfPlentyCard(ctx context.Context, in *requests.PlayYearOfPlentyCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -192,27 +192,27 @@ func (c *catanClient) MaritimeTrade(ctx context.Context, in *requests.MaritimeTr
 	return out, nil
 }
 
-func (c *catanClient) OfferTrading(ctx context.Context, in *requests.OfferTrading, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) SendTradeOffer(ctx context.Context, in *requests.SendTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/pb.Catan/OfferTrading", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.Catan/SendTradeOffer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *catanClient) ConfirmTrading(ctx context.Context, in *requests.ConfirmTrading, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) ConfirmTradeOffer(ctx context.Context, in *requests.ConfirmTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/pb.Catan/ConfirmTrading", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.Catan/ConfirmTradeOffer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *catanClient) CancelTrading(ctx context.Context, in *requests.CancelTrading, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) CancelTradeOffer(ctx context.Context, in *requests.CancelTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/pb.Catan/CancelTrading", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.Catan/CancelTradeOffer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -274,9 +274,9 @@ type CatanServer interface {
 	BuyDevelopmentCard(context.Context, *requests.BuyDevelopmentCard) (*emptypb.Empty, error)
 	ToggleResourceCards(context.Context, *requests.ToggleResourceCards) (*emptypb.Empty, error)
 	MaritimeTrade(context.Context, *requests.MaritimeTrade) (*emptypb.Empty, error)
-	OfferTrading(context.Context, *requests.OfferTrading) (*emptypb.Empty, error)
-	ConfirmTrading(context.Context, *requests.ConfirmTrading) (*emptypb.Empty, error)
-	CancelTrading(context.Context, *requests.CancelTrading) (*emptypb.Empty, error)
+	SendTradeOffer(context.Context, *requests.SendTradeOffer) (*emptypb.Empty, error)
+	ConfirmTradeOffer(context.Context, *requests.ConfirmTradeOffer) (*emptypb.Empty, error)
+	CancelTradeOffer(context.Context, *requests.CancelTradeOffer) (*emptypb.Empty, error)
 	PlayKnightCard(context.Context, *requests.PlayKnightCard) (*emptypb.Empty, error)
 	PlayRoadBuildingCard(context.Context, *requests.PlayRoadBuildingCard) (*emptypb.Empty, error)
 	PlayYearOfPlentyCard(context.Context, *requests.PlayYearOfPlentyCard) (*emptypb.Empty, error)
@@ -333,14 +333,14 @@ func (UnimplementedCatanServer) ToggleResourceCards(context.Context, *requests.T
 func (UnimplementedCatanServer) MaritimeTrade(context.Context, *requests.MaritimeTrade) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MaritimeTrade not implemented")
 }
-func (UnimplementedCatanServer) OfferTrading(context.Context, *requests.OfferTrading) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method OfferTrading not implemented")
+func (UnimplementedCatanServer) SendTradeOffer(context.Context, *requests.SendTradeOffer) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendTradeOffer not implemented")
 }
-func (UnimplementedCatanServer) ConfirmTrading(context.Context, *requests.ConfirmTrading) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ConfirmTrading not implemented")
+func (UnimplementedCatanServer) ConfirmTradeOffer(context.Context, *requests.ConfirmTradeOffer) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfirmTradeOffer not implemented")
 }
-func (UnimplementedCatanServer) CancelTrading(context.Context, *requests.CancelTrading) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CancelTrading not implemented")
+func (UnimplementedCatanServer) CancelTradeOffer(context.Context, *requests.CancelTradeOffer) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelTradeOffer not implemented")
 }
 func (UnimplementedCatanServer) PlayKnightCard(context.Context, *requests.PlayKnightCard) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayKnightCard not implemented")
@@ -637,56 +637,56 @@ func _Catan_MaritimeTrade_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catan_OfferTrading_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.OfferTrading)
+func _Catan_SendTradeOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(requests.SendTradeOffer)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatanServer).OfferTrading(ctx, in)
+		return srv.(CatanServer).SendTradeOffer(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Catan/OfferTrading",
+		FullMethod: "/pb.Catan/SendTradeOffer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).OfferTrading(ctx, req.(*requests.OfferTrading))
+		return srv.(CatanServer).SendTradeOffer(ctx, req.(*requests.SendTradeOffer))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catan_ConfirmTrading_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.ConfirmTrading)
+func _Catan_ConfirmTradeOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(requests.ConfirmTradeOffer)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatanServer).ConfirmTrading(ctx, in)
+		return srv.(CatanServer).ConfirmTradeOffer(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Catan/ConfirmTrading",
+		FullMethod: "/pb.Catan/ConfirmTradeOffer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).ConfirmTrading(ctx, req.(*requests.ConfirmTrading))
+		return srv.(CatanServer).ConfirmTradeOffer(ctx, req.(*requests.ConfirmTradeOffer))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catan_CancelTrading_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.CancelTrading)
+func _Catan_CancelTradeOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(requests.CancelTradeOffer)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatanServer).CancelTrading(ctx, in)
+		return srv.(CatanServer).CancelTradeOffer(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Catan/CancelTrading",
+		FullMethod: "/pb.Catan/CancelTradeOffer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).CancelTrading(ctx, req.(*requests.CancelTrading))
+		return srv.(CatanServer).CancelTradeOffer(ctx, req.(*requests.CancelTradeOffer))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -831,16 +831,16 @@ var Catan_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Catan_MaritimeTrade_Handler,
 		},
 		{
-			MethodName: "OfferTrading",
-			Handler:    _Catan_OfferTrading_Handler,
+			MethodName: "SendTradeOffer",
+			Handler:    _Catan_SendTradeOffer_Handler,
 		},
 		{
-			MethodName: "ConfirmTrading",
-			Handler:    _Catan_ConfirmTrading_Handler,
+			MethodName: "ConfirmTradeOffer",
+			Handler:    _Catan_ConfirmTradeOffer_Handler,
 		},
 		{
-			MethodName: "CancelTrading",
-			Handler:    _Catan_CancelTrading_Handler,
+			MethodName: "CancelTradeOffer",
+			Handler:    _Catan_CancelTradeOffer_Handler,
 		},
 		{
 			MethodName: "PlayKnightCard",
