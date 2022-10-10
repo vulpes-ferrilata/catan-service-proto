@@ -32,6 +32,7 @@ type CatanClient interface {
 	StartGame(ctx context.Context, in *requests.StartGame, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	BuildSettlementAndRoad(ctx context.Context, in *requests.BuildSettlementAndRoad, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	RollDices(ctx context.Context, in *requests.RollDices, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DiscardResourceCards(ctx context.Context, in *requests.DiscardResourceCards, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	MoveRobber(ctx context.Context, in *requests.MoveRobber, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	EndTurn(ctx context.Context, in *requests.EndTurn, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	BuildSettlement(ctx context.Context, in *requests.BuildSettlement, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -114,6 +115,15 @@ func (c *catanClient) BuildSettlementAndRoad(ctx context.Context, in *requests.B
 func (c *catanClient) RollDices(ctx context.Context, in *requests.RollDices, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/RollDices", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *catanClient) DiscardResourceCards(ctx context.Context, in *requests.DiscardResourceCards, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/pb.Catan/DiscardResourceCards", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -266,6 +276,7 @@ type CatanServer interface {
 	StartGame(context.Context, *requests.StartGame) (*emptypb.Empty, error)
 	BuildSettlementAndRoad(context.Context, *requests.BuildSettlementAndRoad) (*emptypb.Empty, error)
 	RollDices(context.Context, *requests.RollDices) (*emptypb.Empty, error)
+	DiscardResourceCards(context.Context, *requests.DiscardResourceCards) (*emptypb.Empty, error)
 	MoveRobber(context.Context, *requests.MoveRobber) (*emptypb.Empty, error)
 	EndTurn(context.Context, *requests.EndTurn) (*emptypb.Empty, error)
 	BuildSettlement(context.Context, *requests.BuildSettlement) (*emptypb.Empty, error)
@@ -308,6 +319,9 @@ func (UnimplementedCatanServer) BuildSettlementAndRoad(context.Context, *request
 }
 func (UnimplementedCatanServer) RollDices(context.Context, *requests.RollDices) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RollDices not implemented")
+}
+func (UnimplementedCatanServer) DiscardResourceCards(context.Context, *requests.DiscardResourceCards) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DiscardResourceCards not implemented")
 }
 func (UnimplementedCatanServer) MoveRobber(context.Context, *requests.MoveRobber) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MoveRobber not implemented")
@@ -489,6 +503,24 @@ func _Catan_RollDices_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CatanServer).RollDices(ctx, req.(*requests.RollDices))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Catan_DiscardResourceCards_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(requests.DiscardResourceCards)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CatanServer).DiscardResourceCards(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Catan/DiscardResourceCards",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CatanServer).DiscardResourceCards(ctx, req.(*requests.DiscardResourceCards))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -797,6 +829,10 @@ var Catan_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RollDices",
 			Handler:    _Catan_RollDices_Handler,
+		},
+		{
+			MethodName: "DiscardResourceCards",
+			Handler:    _Catan_DiscardResourceCards_Handler,
 		},
 		{
 			MethodName: "MoveRobber",

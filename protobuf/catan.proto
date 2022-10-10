@@ -11,6 +11,7 @@ import "protobuf/requests/join_game.proto";
 import "protobuf/requests/start_game.proto";
 import "protobuf/requests/build_settlement_and_road.proto";
 import "protobuf/requests/roll_dices.proto";
+import "protobuf/requests/discard_resource_cards.proto";
 import "protobuf/requests/move_robber.proto";
 import "protobuf/requests/end_turn.proto";
 import "protobuf/requests/build_settlement.proto";
@@ -40,6 +41,7 @@ service Catan {
     rpc StartGame(requests.StartGame) returns (google.protobuf.Empty) {}
     rpc BuildSettlementAndRoad(requests.BuildSettlementAndRoad) returns(google.protobuf.Empty) {} 
     rpc RollDices(requests.RollDices) returns (google.protobuf.Empty) {}
+    rpc DiscardResourceCards(requests.DiscardResourceCards) returns (google.protobuf.Empty) {}
     rpc MoveRobber(requests.MoveRobber) returns (google.protobuf.Empty) {}
     rpc EndTurn(requests.EndTurn) returns (google.protobuf.Empty) {}
     rpc BuildSettlement(requests.BuildSettlement) returns (google.protobuf.Empty) {}

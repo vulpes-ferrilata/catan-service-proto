@@ -15,11 +15,12 @@ message Player {
     string UserID = 2;
     string Color = 3;
     int32 TurnOrder = 4;
-    bool IsOffered = 5;
-    int32 Score = 6;
-    repeated Achievement Achievements = 7;
-    repeated ResourceCard ResourceCards = 8;
-    repeated DevelopmentCard DevelopmentCards = 9;
-    repeated Construction Constructions = 10;
-    repeated Road Roads = 11;
+    bool ReceivedOffer = 5;
+    bool DiscardedResources = 6;
+    int32 Score = 7;
+    repeated Achievement Achievements = 8;
+    repeated ResourceCard ResourceCards = 9;
+    repeated DevelopmentCard DevelopmentCards = 10;
+    repeated Construction Constructions = 11;
+    repeated Road Roads = 12;
 }
