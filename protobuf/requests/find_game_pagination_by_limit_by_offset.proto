@@ -4,7 +4,7 @@ option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/requests
 
 package requests;
 
-message GetGameByIDByUserID {
-    string GameID = 1;
-    string UserID = 2;    
+message FindGamePaginationByLimitByOffset {
+    int32 Limit = 1;
+    int32 Offset = 2;
 }

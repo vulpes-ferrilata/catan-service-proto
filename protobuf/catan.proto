@@ -4,8 +4,8 @@ option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb";
 
 package pb;
 
-import "protobuf/requests/find_games_by_user_id.proto";
-import "protobuf/requests/get_game_by_id_by_user_id.proto";
+import "protobuf/requests/find_game_pagination_by_limit_by_offset.proto";
+import "protobuf/requests/get_game_detail_by_id_by_user_id.proto";
 import "protobuf/requests/create_game.proto";
 import "protobuf/requests/join_game.proto";
 import "protobuf/requests/start_game.proto";
@@ -28,13 +28,13 @@ import "protobuf/requests/play_road_building_card.proto";
 import "protobuf/requests/play_year_of_plenty_card.proto";
 import "protobuf/requests/play_monopoly_card.proto";
 
-import "protobuf/responses/game.proto";
-import "protobuf/responses/game_list.proto";
+import "protobuf/responses/game_pagination.proto";
+import "protobuf/responses/game_detail.proto";
 import "google/protobuf/empty.proto";
 
 service Catan {
-    rpc FindGamesByUserID(requests.FindGamesByUserID) returns (responses.GameList) {}
-    rpc GetGameByIDByUserID(requests.GetGameByIDByUserID) returns (responses.Game) {}
+    rpc FindGamePaginationByLimitByOffset(requests.FindGamePaginationByLimitByOffset) returns (responses.GamePagination) {}
+    rpc GetGameDetailByIDByUserID(requests.GetGameDetailByIDByUserID) returns (responses.GameDetail) {}
 
     rpc CreateGame(requests.CreateGame) returns (google.protobuf.Empty) {}
     rpc JoinGame(requests.JoinGame) returns (google.protobuf.Empty) {}

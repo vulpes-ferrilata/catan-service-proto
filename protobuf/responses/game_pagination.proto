@@ -6,6 +6,7 @@ package responses;
 
 import "protobuf/responses/game.proto";
 
-message GameList {
-    repeated Game Games = 1;
+message GamePagination {
+    int32 Total = 1;
+    repeated Game Data = 2;
 }

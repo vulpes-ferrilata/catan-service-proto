@@ -25,8 +25,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CatanClient interface {
-	FindGamesByUserID(ctx context.Context, in *requests.FindGamesByUserID, opts ...grpc.CallOption) (*responses.GameList, error)
-	GetGameByIDByUserID(ctx context.Context, in *requests.GetGameByIDByUserID, opts ...grpc.CallOption) (*responses.Game, error)
+	FindGamePaginationByLimitByOffset(ctx context.Context, in *requests.FindGamePaginationByLimitByOffset, opts ...grpc.CallOption) (*responses.GamePagination, error)
+	GetGameDetailByIDByUserID(ctx context.Context, in *requests.GetGameDetailByIDByUserID, opts ...grpc.CallOption) (*responses.GameDetail, error)
 	CreateGame(ctx context.Context, in *requests.CreateGame, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	JoinGame(ctx context.Context, in *requests.JoinGame, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	StartGame(ctx context.Context, in *requests.StartGame, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -58,18 +58,18 @@ func NewCatanClient(cc grpc.ClientConnInterface) CatanClient {
 	return &catanClient{cc}
 }
 
-func (c *catanClient) FindGamesByUserID(ctx context.Context, in *requests.FindGamesByUserID, opts ...grpc.CallOption) (*responses.GameList, error) {
-	out := new(responses.GameList)
-	err := c.cc.Invoke(ctx, "/pb.Catan/FindGamesByUserID", in, out, opts...)
+func (c *catanClient) FindGamePaginationByLimitByOffset(ctx context.Context, in *requests.FindGamePaginationByLimitByOffset, opts ...grpc.CallOption) (*responses.GamePagination, error) {
+	out := new(responses.GamePagination)
+	err := c.cc.Invoke(ctx, "/pb.Catan/FindGamePaginationByLimitByOffset", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *catanClient) GetGameByIDByUserID(ctx context.Context, in *requests.GetGameByIDByUserID, opts ...grpc.CallOption) (*responses.Game, error) {
-	out := new(responses.Game)
-	err := c.cc.Invoke(ctx, "/pb.Catan/GetGameByIDByUserID", in, out, opts...)
+func (c *catanClient) GetGameDetailByIDByUserID(ctx context.Context, in *requests.GetGameDetailByIDByUserID, opts ...grpc.CallOption) (*responses.GameDetail, error) {
+	out := new(responses.GameDetail)
+	err := c.cc.Invoke(ctx, "/pb.Catan/GetGameDetailByIDByUserID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -269,8 +269,8 @@ func (c *catanClient) PlayMonopolyCard(ctx context.Context, in *requests.PlayMon
 // All implementations must embed UnimplementedCatanServer
 // for forward compatibility
 type CatanServer interface {
-	FindGamesByUserID(context.Context, *requests.FindGamesByUserID) (*responses.GameList, error)
-	GetGameByIDByUserID(context.Context, *requests.GetGameByIDByUserID) (*responses.Game, error)
+	FindGamePaginationByLimitByOffset(context.Context, *requests.FindGamePaginationByLimitByOffset) (*responses.GamePagination, error)
+	GetGameDetailByIDByUserID(context.Context, *requests.GetGameDetailByIDByUserID) (*responses.GameDetail, error)
 	CreateGame(context.Context, *requests.CreateGame) (*emptypb.Empty, error)
 	JoinGame(context.Context, *requests.JoinGame) (*emptypb.Empty, error)
 	StartGame(context.Context, *requests.StartGame) (*emptypb.Empty, error)
@@ -299,11 +299,11 @@ type CatanServer interface {
 type UnimplementedCatanServer struct {
 }
 
-func (UnimplementedCatanServer) FindGamesByUserID(context.Context, *requests.FindGamesByUserID) (*responses.GameList, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FindGamesByUserID not implemented")
+func (UnimplementedCatanServer) FindGamePaginationByLimitByOffset(context.Context, *requests.FindGamePaginationByLimitByOffset) (*responses.GamePagination, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindGamePaginationByLimitByOffset not implemented")
 }
-func (UnimplementedCatanServer) GetGameByIDByUserID(context.Context, *requests.GetGameByIDByUserID) (*responses.Game, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetGameByIDByUserID not implemented")
+func (UnimplementedCatanServer) GetGameDetailByIDByUserID(context.Context, *requests.GetGameDetailByIDByUserID) (*responses.GameDetail, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGameDetailByIDByUserID not implemented")
 }
 func (UnimplementedCatanServer) CreateGame(context.Context, *requests.CreateGame) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateGame not implemented")
@@ -381,38 +381,38 @@ func RegisterCatanServer(s grpc.ServiceRegistrar, srv CatanServer) {
 	s.RegisterService(&Catan_ServiceDesc, srv)
 }
 
-func _Catan_FindGamesByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.FindGamesByUserID)
+func _Catan_FindGamePaginationByLimitByOffset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(requests.FindGamePaginationByLimitByOffset)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatanServer).FindGamesByUserID(ctx, in)
+		return srv.(CatanServer).FindGamePaginationByLimitByOffset(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Catan/FindGamesByUserID",
+		FullMethod: "/pb.Catan/FindGamePaginationByLimitByOffset",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).FindGamesByUserID(ctx, req.(*requests.FindGamesByUserID))
+		return srv.(CatanServer).FindGamePaginationByLimitByOffset(ctx, req.(*requests.FindGamePaginationByLimitByOffset))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catan_GetGameByIDByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.GetGameByIDByUserID)
+func _Catan_GetGameDetailByIDByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(requests.GetGameDetailByIDByUserID)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatanServer).GetGameByIDByUserID(ctx, in)
+		return srv.(CatanServer).GetGameDetailByIDByUserID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Catan/GetGameByIDByUserID",
+		FullMethod: "/pb.Catan/GetGameDetailByIDByUserID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).GetGameByIDByUserID(ctx, req.(*requests.GetGameByIDByUserID))
+		return srv.(CatanServer).GetGameDetailByIDByUserID(ctx, req.(*requests.GetGameDetailByIDByUserID))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -803,12 +803,12 @@ var Catan_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CatanServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "FindGamesByUserID",
-			Handler:    _Catan_FindGamesByUserID_Handler,
+			MethodName: "FindGamePaginationByLimitByOffset",
+			Handler:    _Catan_FindGamePaginationByLimitByOffset_Handler,
 		},
 		{
-			MethodName: "GetGameByIDByUserID",
-			Handler:    _Catan_GetGameByIDByUserID_Handler,
+			MethodName: "GetGameDetailByIDByUserID",
+			Handler:    _Catan_GetGameDetailByIDByUserID_Handler,
 		},
 		{
 			MethodName: "CreateGame",
