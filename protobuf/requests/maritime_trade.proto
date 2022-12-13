@@ -8,4 +8,5 @@ message MaritimeTrade {
     string GameID = 1;
     string UserID = 2;
     string ResourceCardType = 3;
+    string DemandingResourceCardType = 4;
 }
