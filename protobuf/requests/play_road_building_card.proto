@@ -7,5 +7,6 @@ package requests;
 message PlayRoadBuildingCard {
     string GameID = 1;
     string UserID = 2;
-    repeated string PathIDs = 3;
+    string DevelopmentCardID = 3;
+    repeated string PathIDs = 4;
 }

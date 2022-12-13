@@ -7,6 +7,7 @@ package requests;
 message PlayKnightCard {
     string GameID = 1;
     string UserID = 2;
-    string TerrainID = 3;
-    string PlayerID = 4;
+    string DevelopmentCardID = 3;
+    string TerrainID = 4;
+    string PlayerID = 5;
 }
