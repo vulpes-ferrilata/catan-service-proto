@@ -48,6 +48,7 @@ type CatanClient interface {
 	PlayRoadBuildingCard(ctx context.Context, in *requests.PlayRoadBuildingCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	PlayYearOfPlentyCard(ctx context.Context, in *requests.PlayYearOfPlentyCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	PlayMonopolyCard(ctx context.Context, in *requests.PlayMonopolyCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	PlayVictoryPointCard(ctx context.Context, in *requests.PlayVictoryPointCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type catanClient struct {
@@ -265,6 +266,15 @@ func (c *catanClient) PlayMonopolyCard(ctx context.Context, in *requests.PlayMon
 	return out, nil
 }
 
+func (c *catanClient) PlayVictoryPointCard(ctx context.Context, in *requests.PlayVictoryPointCard, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/pb.Catan/PlayVictoryPointCard", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CatanServer is the server API for Catan service.
 // All implementations must embed UnimplementedCatanServer
 // for forward compatibility
@@ -292,6 +302,7 @@ type CatanServer interface {
 	PlayRoadBuildingCard(context.Context, *requests.PlayRoadBuildingCard) (*emptypb.Empty, error)
 	PlayYearOfPlentyCard(context.Context, *requests.PlayYearOfPlentyCard) (*emptypb.Empty, error)
 	PlayMonopolyCard(context.Context, *requests.PlayMonopolyCard) (*emptypb.Empty, error)
+	PlayVictoryPointCard(context.Context, *requests.PlayVictoryPointCard) (*emptypb.Empty, error)
 	mustEmbedUnimplementedCatanServer()
 }
 
@@ -367,6 +378,9 @@ func (UnimplementedCatanServer) PlayYearOfPlentyCard(context.Context, *requests.
 }
 func (UnimplementedCatanServer) PlayMonopolyCard(context.Context, *requests.PlayMonopolyCard) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayMonopolyCard not implemented")
+}
+func (UnimplementedCatanServer) PlayVictoryPointCard(context.Context, *requests.PlayVictoryPointCard) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PlayVictoryPointCard not implemented")
 }
 func (UnimplementedCatanServer) mustEmbedUnimplementedCatanServer() {}
 
@@ -795,6 +809,24 @@ func _Catan_PlayMonopolyCard_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Catan_PlayVictoryPointCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(requests.PlayVictoryPointCard)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CatanServer).PlayVictoryPointCard(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Catan/PlayVictoryPointCard",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CatanServer).PlayVictoryPointCard(ctx, req.(*requests.PlayVictoryPointCard))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Catan_ServiceDesc is the grpc.ServiceDesc for Catan service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -893,6 +925,10 @@ var Catan_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PlayMonopolyCard",
 			Handler:    _Catan_PlayMonopolyCard_Handler,
+		},
+		{
+			MethodName: "PlayVictoryPointCard",
+			Handler:    _Catan_PlayVictoryPointCard_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

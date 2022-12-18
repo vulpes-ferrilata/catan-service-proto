@@ -27,6 +27,7 @@ import "protobuf/requests/play_knight_card.proto";
 import "protobuf/requests/play_road_building_card.proto";
 import "protobuf/requests/play_year_of_plenty_card.proto";
 import "protobuf/requests/play_monopoly_card.proto";
+import "protobuf/requests/play_victory_point_card.proto";
 
 import "protobuf/responses/game_pagination.proto";
 import "protobuf/responses/game_detail.proto";
@@ -57,4 +58,5 @@ service Catan {
     rpc PlayRoadBuildingCard(requests.PlayRoadBuildingCard) returns (google.protobuf.Empty) {}
     rpc PlayYearOfPlentyCard(requests.PlayYearOfPlentyCard) returns (google.protobuf.Empty) {}
     rpc PlayMonopolyCard(requests.PlayMonopolyCard) returns (google.protobuf.Empty) {}
+    rpc PlayVictoryPointCard(requests.PlayVictoryPointCard) returns (google.protobuf.Empty) {}
 }
