@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+import "protobuf/models/land.proto";
+
+message Construction {
+    string ID = 1;
+    string Type = 2;
+    Land Land = 3;
+}

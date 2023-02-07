@@ -8,8 +8,7 @@ package pb
 
 import (
 	context "context"
-	requests "github.com/vulpes-ferrilata/catan-service-proto/pb/requests"
-	responses "github.com/vulpes-ferrilata/catan-service-proto/pb/responses"
+	models "github.com/vulpes-ferrilata/catan-service-proto/pb/models"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -25,30 +24,30 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CatanClient interface {
-	FindGamePaginationByLimitByOffset(ctx context.Context, in *requests.FindGamePaginationByLimitByOffset, opts ...grpc.CallOption) (*responses.GamePagination, error)
-	GetGameDetailByIDByUserID(ctx context.Context, in *requests.GetGameDetailByIDByUserID, opts ...grpc.CallOption) (*responses.GameDetail, error)
-	CreateGame(ctx context.Context, in *requests.CreateGame, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	JoinGame(ctx context.Context, in *requests.JoinGame, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	StartGame(ctx context.Context, in *requests.StartGame, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	BuildSettlementAndRoad(ctx context.Context, in *requests.BuildSettlementAndRoad, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	RollDices(ctx context.Context, in *requests.RollDices, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	DiscardResourceCards(ctx context.Context, in *requests.DiscardResourceCards, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	MoveRobber(ctx context.Context, in *requests.MoveRobber, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	EndTurn(ctx context.Context, in *requests.EndTurn, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	BuildSettlement(ctx context.Context, in *requests.BuildSettlement, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	BuildRoad(ctx context.Context, in *requests.BuildRoad, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	UpgradeCity(ctx context.Context, in *requests.UpgradeCity, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	BuyDevelopmentCard(ctx context.Context, in *requests.BuyDevelopmentCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	ToggleResourceCards(ctx context.Context, in *requests.ToggleResourceCards, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	MaritimeTrade(ctx context.Context, in *requests.MaritimeTrade, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	SendTradeOffer(ctx context.Context, in *requests.SendTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	ConfirmTradeOffer(ctx context.Context, in *requests.ConfirmTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	CancelTradeOffer(ctx context.Context, in *requests.CancelTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	PlayKnightCard(ctx context.Context, in *requests.PlayKnightCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	PlayRoadBuildingCard(ctx context.Context, in *requests.PlayRoadBuildingCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	PlayYearOfPlentyCard(ctx context.Context, in *requests.PlayYearOfPlentyCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	PlayMonopolyCard(ctx context.Context, in *requests.PlayMonopolyCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	PlayVictoryPointCard(ctx context.Context, in *requests.PlayVictoryPointCard, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	FindGamePaginationByLimitByOffset(ctx context.Context, in *models.FindGamePaginationByLimitByOffsetRequest, opts ...grpc.CallOption) (*models.GamePagination, error)
+	GetGameDetailByIDByUserID(ctx context.Context, in *models.GetGameDetailByIDByUserIDRequest, opts ...grpc.CallOption) (*models.GameDetail, error)
+	CreateGame(ctx context.Context, in *models.CreateGameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	JoinGame(ctx context.Context, in *models.JoinGameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	StartGame(ctx context.Context, in *models.StartGameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	BuildSettlementAndRoad(ctx context.Context, in *models.BuildSettlementAndRoadRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	RollDices(ctx context.Context, in *models.RollDicesRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DiscardResourceCards(ctx context.Context, in *models.DiscardResourceCardsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	MoveRobber(ctx context.Context, in *models.MoveRobberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	EndTurn(ctx context.Context, in *models.EndTurnRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	BuildSettlement(ctx context.Context, in *models.BuildSettlementRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	BuildRoad(ctx context.Context, in *models.BuildRoadRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	UpgradeCity(ctx context.Context, in *models.UpgradeCityRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	BuyDevelopmentCard(ctx context.Context, in *models.BuyDevelopmentCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	ToggleResourceCards(ctx context.Context, in *models.ToggleResourceCardsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	MaritimeTrade(ctx context.Context, in *models.MaritimeTradeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	SendTradeOffer(ctx context.Context, in *models.SendTradeOfferRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	ConfirmTradeOffer(ctx context.Context, in *models.ConfirmTradeOfferRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	CancelTradeOffer(ctx context.Context, in *models.CancelTradeOfferRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	PlayKnightCard(ctx context.Context, in *models.PlayKnightCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	PlayRoadBuildingCard(ctx context.Context, in *models.PlayRoadBuildingCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	PlayYearOfPlentyCard(ctx context.Context, in *models.PlayYearOfPlentyCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	PlayMonopolyCard(ctx context.Context, in *models.PlayMonopolyCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	PlayVictoryPointCard(ctx context.Context, in *models.PlayVictoryPointCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type catanClient struct {
@@ -59,8 +58,8 @@ func NewCatanClient(cc grpc.ClientConnInterface) CatanClient {
 	return &catanClient{cc}
 }
 
-func (c *catanClient) FindGamePaginationByLimitByOffset(ctx context.Context, in *requests.FindGamePaginationByLimitByOffset, opts ...grpc.CallOption) (*responses.GamePagination, error) {
-	out := new(responses.GamePagination)
+func (c *catanClient) FindGamePaginationByLimitByOffset(ctx context.Context, in *models.FindGamePaginationByLimitByOffsetRequest, opts ...grpc.CallOption) (*models.GamePagination, error) {
+	out := new(models.GamePagination)
 	err := c.cc.Invoke(ctx, "/pb.Catan/FindGamePaginationByLimitByOffset", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -68,8 +67,8 @@ func (c *catanClient) FindGamePaginationByLimitByOffset(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *catanClient) GetGameDetailByIDByUserID(ctx context.Context, in *requests.GetGameDetailByIDByUserID, opts ...grpc.CallOption) (*responses.GameDetail, error) {
-	out := new(responses.GameDetail)
+func (c *catanClient) GetGameDetailByIDByUserID(ctx context.Context, in *models.GetGameDetailByIDByUserIDRequest, opts ...grpc.CallOption) (*models.GameDetail, error) {
+	out := new(models.GameDetail)
 	err := c.cc.Invoke(ctx, "/pb.Catan/GetGameDetailByIDByUserID", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -77,7 +76,7 @@ func (c *catanClient) GetGameDetailByIDByUserID(ctx context.Context, in *request
 	return out, nil
 }
 
-func (c *catanClient) CreateGame(ctx context.Context, in *requests.CreateGame, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) CreateGame(ctx context.Context, in *models.CreateGameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/CreateGame", in, out, opts...)
 	if err != nil {
@@ -86,7 +85,7 @@ func (c *catanClient) CreateGame(ctx context.Context, in *requests.CreateGame, o
 	return out, nil
 }
 
-func (c *catanClient) JoinGame(ctx context.Context, in *requests.JoinGame, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) JoinGame(ctx context.Context, in *models.JoinGameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/JoinGame", in, out, opts...)
 	if err != nil {
@@ -95,7 +94,7 @@ func (c *catanClient) JoinGame(ctx context.Context, in *requests.JoinGame, opts 
 	return out, nil
 }
 
-func (c *catanClient) StartGame(ctx context.Context, in *requests.StartGame, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) StartGame(ctx context.Context, in *models.StartGameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/StartGame", in, out, opts...)
 	if err != nil {
@@ -104,7 +103,7 @@ func (c *catanClient) StartGame(ctx context.Context, in *requests.StartGame, opt
 	return out, nil
 }
 
-func (c *catanClient) BuildSettlementAndRoad(ctx context.Context, in *requests.BuildSettlementAndRoad, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) BuildSettlementAndRoad(ctx context.Context, in *models.BuildSettlementAndRoadRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/BuildSettlementAndRoad", in, out, opts...)
 	if err != nil {
@@ -113,7 +112,7 @@ func (c *catanClient) BuildSettlementAndRoad(ctx context.Context, in *requests.B
 	return out, nil
 }
 
-func (c *catanClient) RollDices(ctx context.Context, in *requests.RollDices, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) RollDices(ctx context.Context, in *models.RollDicesRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/RollDices", in, out, opts...)
 	if err != nil {
@@ -122,7 +121,7 @@ func (c *catanClient) RollDices(ctx context.Context, in *requests.RollDices, opt
 	return out, nil
 }
 
-func (c *catanClient) DiscardResourceCards(ctx context.Context, in *requests.DiscardResourceCards, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) DiscardResourceCards(ctx context.Context, in *models.DiscardResourceCardsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/DiscardResourceCards", in, out, opts...)
 	if err != nil {
@@ -131,7 +130,7 @@ func (c *catanClient) DiscardResourceCards(ctx context.Context, in *requests.Dis
 	return out, nil
 }
 
-func (c *catanClient) MoveRobber(ctx context.Context, in *requests.MoveRobber, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) MoveRobber(ctx context.Context, in *models.MoveRobberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/MoveRobber", in, out, opts...)
 	if err != nil {
@@ -140,7 +139,7 @@ func (c *catanClient) MoveRobber(ctx context.Context, in *requests.MoveRobber, o
 	return out, nil
 }
 
-func (c *catanClient) EndTurn(ctx context.Context, in *requests.EndTurn, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) EndTurn(ctx context.Context, in *models.EndTurnRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/EndTurn", in, out, opts...)
 	if err != nil {
@@ -149,7 +148,7 @@ func (c *catanClient) EndTurn(ctx context.Context, in *requests.EndTurn, opts ..
 	return out, nil
 }
 
-func (c *catanClient) BuildSettlement(ctx context.Context, in *requests.BuildSettlement, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) BuildSettlement(ctx context.Context, in *models.BuildSettlementRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/BuildSettlement", in, out, opts...)
 	if err != nil {
@@ -158,7 +157,7 @@ func (c *catanClient) BuildSettlement(ctx context.Context, in *requests.BuildSet
 	return out, nil
 }
 
-func (c *catanClient) BuildRoad(ctx context.Context, in *requests.BuildRoad, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) BuildRoad(ctx context.Context, in *models.BuildRoadRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/BuildRoad", in, out, opts...)
 	if err != nil {
@@ -167,7 +166,7 @@ func (c *catanClient) BuildRoad(ctx context.Context, in *requests.BuildRoad, opt
 	return out, nil
 }
 
-func (c *catanClient) UpgradeCity(ctx context.Context, in *requests.UpgradeCity, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) UpgradeCity(ctx context.Context, in *models.UpgradeCityRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/UpgradeCity", in, out, opts...)
 	if err != nil {
@@ -176,7 +175,7 @@ func (c *catanClient) UpgradeCity(ctx context.Context, in *requests.UpgradeCity,
 	return out, nil
 }
 
-func (c *catanClient) BuyDevelopmentCard(ctx context.Context, in *requests.BuyDevelopmentCard, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) BuyDevelopmentCard(ctx context.Context, in *models.BuyDevelopmentCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/BuyDevelopmentCard", in, out, opts...)
 	if err != nil {
@@ -185,7 +184,7 @@ func (c *catanClient) BuyDevelopmentCard(ctx context.Context, in *requests.BuyDe
 	return out, nil
 }
 
-func (c *catanClient) ToggleResourceCards(ctx context.Context, in *requests.ToggleResourceCards, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) ToggleResourceCards(ctx context.Context, in *models.ToggleResourceCardsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/ToggleResourceCards", in, out, opts...)
 	if err != nil {
@@ -194,7 +193,7 @@ func (c *catanClient) ToggleResourceCards(ctx context.Context, in *requests.Togg
 	return out, nil
 }
 
-func (c *catanClient) MaritimeTrade(ctx context.Context, in *requests.MaritimeTrade, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) MaritimeTrade(ctx context.Context, in *models.MaritimeTradeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/MaritimeTrade", in, out, opts...)
 	if err != nil {
@@ -203,7 +202,7 @@ func (c *catanClient) MaritimeTrade(ctx context.Context, in *requests.MaritimeTr
 	return out, nil
 }
 
-func (c *catanClient) SendTradeOffer(ctx context.Context, in *requests.SendTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) SendTradeOffer(ctx context.Context, in *models.SendTradeOfferRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/SendTradeOffer", in, out, opts...)
 	if err != nil {
@@ -212,7 +211,7 @@ func (c *catanClient) SendTradeOffer(ctx context.Context, in *requests.SendTrade
 	return out, nil
 }
 
-func (c *catanClient) ConfirmTradeOffer(ctx context.Context, in *requests.ConfirmTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) ConfirmTradeOffer(ctx context.Context, in *models.ConfirmTradeOfferRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/ConfirmTradeOffer", in, out, opts...)
 	if err != nil {
@@ -221,7 +220,7 @@ func (c *catanClient) ConfirmTradeOffer(ctx context.Context, in *requests.Confir
 	return out, nil
 }
 
-func (c *catanClient) CancelTradeOffer(ctx context.Context, in *requests.CancelTradeOffer, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) CancelTradeOffer(ctx context.Context, in *models.CancelTradeOfferRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/CancelTradeOffer", in, out, opts...)
 	if err != nil {
@@ -230,7 +229,7 @@ func (c *catanClient) CancelTradeOffer(ctx context.Context, in *requests.CancelT
 	return out, nil
 }
 
-func (c *catanClient) PlayKnightCard(ctx context.Context, in *requests.PlayKnightCard, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) PlayKnightCard(ctx context.Context, in *models.PlayKnightCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/PlayKnightCard", in, out, opts...)
 	if err != nil {
@@ -239,7 +238,7 @@ func (c *catanClient) PlayKnightCard(ctx context.Context, in *requests.PlayKnigh
 	return out, nil
 }
 
-func (c *catanClient) PlayRoadBuildingCard(ctx context.Context, in *requests.PlayRoadBuildingCard, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) PlayRoadBuildingCard(ctx context.Context, in *models.PlayRoadBuildingCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/PlayRoadBuildingCard", in, out, opts...)
 	if err != nil {
@@ -248,7 +247,7 @@ func (c *catanClient) PlayRoadBuildingCard(ctx context.Context, in *requests.Pla
 	return out, nil
 }
 
-func (c *catanClient) PlayYearOfPlentyCard(ctx context.Context, in *requests.PlayYearOfPlentyCard, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) PlayYearOfPlentyCard(ctx context.Context, in *models.PlayYearOfPlentyCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/PlayYearOfPlentyCard", in, out, opts...)
 	if err != nil {
@@ -257,7 +256,7 @@ func (c *catanClient) PlayYearOfPlentyCard(ctx context.Context, in *requests.Pla
 	return out, nil
 }
 
-func (c *catanClient) PlayMonopolyCard(ctx context.Context, in *requests.PlayMonopolyCard, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) PlayMonopolyCard(ctx context.Context, in *models.PlayMonopolyCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/PlayMonopolyCard", in, out, opts...)
 	if err != nil {
@@ -266,7 +265,7 @@ func (c *catanClient) PlayMonopolyCard(ctx context.Context, in *requests.PlayMon
 	return out, nil
 }
 
-func (c *catanClient) PlayVictoryPointCard(ctx context.Context, in *requests.PlayVictoryPointCard, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *catanClient) PlayVictoryPointCard(ctx context.Context, in *models.PlayVictoryPointCardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/pb.Catan/PlayVictoryPointCard", in, out, opts...)
 	if err != nil {
@@ -279,30 +278,30 @@ func (c *catanClient) PlayVictoryPointCard(ctx context.Context, in *requests.Pla
 // All implementations must embed UnimplementedCatanServer
 // for forward compatibility
 type CatanServer interface {
-	FindGamePaginationByLimitByOffset(context.Context, *requests.FindGamePaginationByLimitByOffset) (*responses.GamePagination, error)
-	GetGameDetailByIDByUserID(context.Context, *requests.GetGameDetailByIDByUserID) (*responses.GameDetail, error)
-	CreateGame(context.Context, *requests.CreateGame) (*emptypb.Empty, error)
-	JoinGame(context.Context, *requests.JoinGame) (*emptypb.Empty, error)
-	StartGame(context.Context, *requests.StartGame) (*emptypb.Empty, error)
-	BuildSettlementAndRoad(context.Context, *requests.BuildSettlementAndRoad) (*emptypb.Empty, error)
-	RollDices(context.Context, *requests.RollDices) (*emptypb.Empty, error)
-	DiscardResourceCards(context.Context, *requests.DiscardResourceCards) (*emptypb.Empty, error)
-	MoveRobber(context.Context, *requests.MoveRobber) (*emptypb.Empty, error)
-	EndTurn(context.Context, *requests.EndTurn) (*emptypb.Empty, error)
-	BuildSettlement(context.Context, *requests.BuildSettlement) (*emptypb.Empty, error)
-	BuildRoad(context.Context, *requests.BuildRoad) (*emptypb.Empty, error)
-	UpgradeCity(context.Context, *requests.UpgradeCity) (*emptypb.Empty, error)
-	BuyDevelopmentCard(context.Context, *requests.BuyDevelopmentCard) (*emptypb.Empty, error)
-	ToggleResourceCards(context.Context, *requests.ToggleResourceCards) (*emptypb.Empty, error)
-	MaritimeTrade(context.Context, *requests.MaritimeTrade) (*emptypb.Empty, error)
-	SendTradeOffer(context.Context, *requests.SendTradeOffer) (*emptypb.Empty, error)
-	ConfirmTradeOffer(context.Context, *requests.ConfirmTradeOffer) (*emptypb.Empty, error)
-	CancelTradeOffer(context.Context, *requests.CancelTradeOffer) (*emptypb.Empty, error)
-	PlayKnightCard(context.Context, *requests.PlayKnightCard) (*emptypb.Empty, error)
-	PlayRoadBuildingCard(context.Context, *requests.PlayRoadBuildingCard) (*emptypb.Empty, error)
-	PlayYearOfPlentyCard(context.Context, *requests.PlayYearOfPlentyCard) (*emptypb.Empty, error)
-	PlayMonopolyCard(context.Context, *requests.PlayMonopolyCard) (*emptypb.Empty, error)
-	PlayVictoryPointCard(context.Context, *requests.PlayVictoryPointCard) (*emptypb.Empty, error)
+	FindGamePaginationByLimitByOffset(context.Context, *models.FindGamePaginationByLimitByOffsetRequest) (*models.GamePagination, error)
+	GetGameDetailByIDByUserID(context.Context, *models.GetGameDetailByIDByUserIDRequest) (*models.GameDetail, error)
+	CreateGame(context.Context, *models.CreateGameRequest) (*emptypb.Empty, error)
+	JoinGame(context.Context, *models.JoinGameRequest) (*emptypb.Empty, error)
+	StartGame(context.Context, *models.StartGameRequest) (*emptypb.Empty, error)
+	BuildSettlementAndRoad(context.Context, *models.BuildSettlementAndRoadRequest) (*emptypb.Empty, error)
+	RollDices(context.Context, *models.RollDicesRequest) (*emptypb.Empty, error)
+	DiscardResourceCards(context.Context, *models.DiscardResourceCardsRequest) (*emptypb.Empty, error)
+	MoveRobber(context.Context, *models.MoveRobberRequest) (*emptypb.Empty, error)
+	EndTurn(context.Context, *models.EndTurnRequest) (*emptypb.Empty, error)
+	BuildSettlement(context.Context, *models.BuildSettlementRequest) (*emptypb.Empty, error)
+	BuildRoad(context.Context, *models.BuildRoadRequest) (*emptypb.Empty, error)
+	UpgradeCity(context.Context, *models.UpgradeCityRequest) (*emptypb.Empty, error)
+	BuyDevelopmentCard(context.Context, *models.BuyDevelopmentCardRequest) (*emptypb.Empty, error)
+	ToggleResourceCards(context.Context, *models.ToggleResourceCardsRequest) (*emptypb.Empty, error)
+	MaritimeTrade(context.Context, *models.MaritimeTradeRequest) (*emptypb.Empty, error)
+	SendTradeOffer(context.Context, *models.SendTradeOfferRequest) (*emptypb.Empty, error)
+	ConfirmTradeOffer(context.Context, *models.ConfirmTradeOfferRequest) (*emptypb.Empty, error)
+	CancelTradeOffer(context.Context, *models.CancelTradeOfferRequest) (*emptypb.Empty, error)
+	PlayKnightCard(context.Context, *models.PlayKnightCardRequest) (*emptypb.Empty, error)
+	PlayRoadBuildingCard(context.Context, *models.PlayRoadBuildingCardRequest) (*emptypb.Empty, error)
+	PlayYearOfPlentyCard(context.Context, *models.PlayYearOfPlentyCardRequest) (*emptypb.Empty, error)
+	PlayMonopolyCard(context.Context, *models.PlayMonopolyCardRequest) (*emptypb.Empty, error)
+	PlayVictoryPointCard(context.Context, *models.PlayVictoryPointCardRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedCatanServer()
 }
 
@@ -310,76 +309,76 @@ type CatanServer interface {
 type UnimplementedCatanServer struct {
 }
 
-func (UnimplementedCatanServer) FindGamePaginationByLimitByOffset(context.Context, *requests.FindGamePaginationByLimitByOffset) (*responses.GamePagination, error) {
+func (UnimplementedCatanServer) FindGamePaginationByLimitByOffset(context.Context, *models.FindGamePaginationByLimitByOffsetRequest) (*models.GamePagination, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindGamePaginationByLimitByOffset not implemented")
 }
-func (UnimplementedCatanServer) GetGameDetailByIDByUserID(context.Context, *requests.GetGameDetailByIDByUserID) (*responses.GameDetail, error) {
+func (UnimplementedCatanServer) GetGameDetailByIDByUserID(context.Context, *models.GetGameDetailByIDByUserIDRequest) (*models.GameDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGameDetailByIDByUserID not implemented")
 }
-func (UnimplementedCatanServer) CreateGame(context.Context, *requests.CreateGame) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) CreateGame(context.Context, *models.CreateGameRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateGame not implemented")
 }
-func (UnimplementedCatanServer) JoinGame(context.Context, *requests.JoinGame) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) JoinGame(context.Context, *models.JoinGameRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method JoinGame not implemented")
 }
-func (UnimplementedCatanServer) StartGame(context.Context, *requests.StartGame) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) StartGame(context.Context, *models.StartGameRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartGame not implemented")
 }
-func (UnimplementedCatanServer) BuildSettlementAndRoad(context.Context, *requests.BuildSettlementAndRoad) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) BuildSettlementAndRoad(context.Context, *models.BuildSettlementAndRoadRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BuildSettlementAndRoad not implemented")
 }
-func (UnimplementedCatanServer) RollDices(context.Context, *requests.RollDices) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) RollDices(context.Context, *models.RollDicesRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RollDices not implemented")
 }
-func (UnimplementedCatanServer) DiscardResourceCards(context.Context, *requests.DiscardResourceCards) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) DiscardResourceCards(context.Context, *models.DiscardResourceCardsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DiscardResourceCards not implemented")
 }
-func (UnimplementedCatanServer) MoveRobber(context.Context, *requests.MoveRobber) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) MoveRobber(context.Context, *models.MoveRobberRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MoveRobber not implemented")
 }
-func (UnimplementedCatanServer) EndTurn(context.Context, *requests.EndTurn) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) EndTurn(context.Context, *models.EndTurnRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EndTurn not implemented")
 }
-func (UnimplementedCatanServer) BuildSettlement(context.Context, *requests.BuildSettlement) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) BuildSettlement(context.Context, *models.BuildSettlementRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BuildSettlement not implemented")
 }
-func (UnimplementedCatanServer) BuildRoad(context.Context, *requests.BuildRoad) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) BuildRoad(context.Context, *models.BuildRoadRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BuildRoad not implemented")
 }
-func (UnimplementedCatanServer) UpgradeCity(context.Context, *requests.UpgradeCity) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) UpgradeCity(context.Context, *models.UpgradeCityRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpgradeCity not implemented")
 }
-func (UnimplementedCatanServer) BuyDevelopmentCard(context.Context, *requests.BuyDevelopmentCard) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) BuyDevelopmentCard(context.Context, *models.BuyDevelopmentCardRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BuyDevelopmentCard not implemented")
 }
-func (UnimplementedCatanServer) ToggleResourceCards(context.Context, *requests.ToggleResourceCards) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) ToggleResourceCards(context.Context, *models.ToggleResourceCardsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ToggleResourceCards not implemented")
 }
-func (UnimplementedCatanServer) MaritimeTrade(context.Context, *requests.MaritimeTrade) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) MaritimeTrade(context.Context, *models.MaritimeTradeRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MaritimeTrade not implemented")
 }
-func (UnimplementedCatanServer) SendTradeOffer(context.Context, *requests.SendTradeOffer) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) SendTradeOffer(context.Context, *models.SendTradeOfferRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendTradeOffer not implemented")
 }
-func (UnimplementedCatanServer) ConfirmTradeOffer(context.Context, *requests.ConfirmTradeOffer) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) ConfirmTradeOffer(context.Context, *models.ConfirmTradeOfferRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConfirmTradeOffer not implemented")
 }
-func (UnimplementedCatanServer) CancelTradeOffer(context.Context, *requests.CancelTradeOffer) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) CancelTradeOffer(context.Context, *models.CancelTradeOfferRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelTradeOffer not implemented")
 }
-func (UnimplementedCatanServer) PlayKnightCard(context.Context, *requests.PlayKnightCard) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) PlayKnightCard(context.Context, *models.PlayKnightCardRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayKnightCard not implemented")
 }
-func (UnimplementedCatanServer) PlayRoadBuildingCard(context.Context, *requests.PlayRoadBuildingCard) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) PlayRoadBuildingCard(context.Context, *models.PlayRoadBuildingCardRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayRoadBuildingCard not implemented")
 }
-func (UnimplementedCatanServer) PlayYearOfPlentyCard(context.Context, *requests.PlayYearOfPlentyCard) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) PlayYearOfPlentyCard(context.Context, *models.PlayYearOfPlentyCardRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayYearOfPlentyCard not implemented")
 }
-func (UnimplementedCatanServer) PlayMonopolyCard(context.Context, *requests.PlayMonopolyCard) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) PlayMonopolyCard(context.Context, *models.PlayMonopolyCardRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayMonopolyCard not implemented")
 }
-func (UnimplementedCatanServer) PlayVictoryPointCard(context.Context, *requests.PlayVictoryPointCard) (*emptypb.Empty, error) {
+func (UnimplementedCatanServer) PlayVictoryPointCard(context.Context, *models.PlayVictoryPointCardRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayVictoryPointCard not implemented")
 }
 func (UnimplementedCatanServer) mustEmbedUnimplementedCatanServer() {}
@@ -396,7 +395,7 @@ func RegisterCatanServer(s grpc.ServiceRegistrar, srv CatanServer) {
 }
 
 func _Catan_FindGamePaginationByLimitByOffset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.FindGamePaginationByLimitByOffset)
+	in := new(models.FindGamePaginationByLimitByOffsetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -408,13 +407,13 @@ func _Catan_FindGamePaginationByLimitByOffset_Handler(srv interface{}, ctx conte
 		FullMethod: "/pb.Catan/FindGamePaginationByLimitByOffset",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).FindGamePaginationByLimitByOffset(ctx, req.(*requests.FindGamePaginationByLimitByOffset))
+		return srv.(CatanServer).FindGamePaginationByLimitByOffset(ctx, req.(*models.FindGamePaginationByLimitByOffsetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_GetGameDetailByIDByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.GetGameDetailByIDByUserID)
+	in := new(models.GetGameDetailByIDByUserIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -426,13 +425,13 @@ func _Catan_GetGameDetailByIDByUserID_Handler(srv interface{}, ctx context.Conte
 		FullMethod: "/pb.Catan/GetGameDetailByIDByUserID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).GetGameDetailByIDByUserID(ctx, req.(*requests.GetGameDetailByIDByUserID))
+		return srv.(CatanServer).GetGameDetailByIDByUserID(ctx, req.(*models.GetGameDetailByIDByUserIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_CreateGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.CreateGame)
+	in := new(models.CreateGameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -444,13 +443,13 @@ func _Catan_CreateGame_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/pb.Catan/CreateGame",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).CreateGame(ctx, req.(*requests.CreateGame))
+		return srv.(CatanServer).CreateGame(ctx, req.(*models.CreateGameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_JoinGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.JoinGame)
+	in := new(models.JoinGameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -462,13 +461,13 @@ func _Catan_JoinGame_Handler(srv interface{}, ctx context.Context, dec func(inte
 		FullMethod: "/pb.Catan/JoinGame",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).JoinGame(ctx, req.(*requests.JoinGame))
+		return srv.(CatanServer).JoinGame(ctx, req.(*models.JoinGameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_StartGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.StartGame)
+	in := new(models.StartGameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -480,13 +479,13 @@ func _Catan_StartGame_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/pb.Catan/StartGame",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).StartGame(ctx, req.(*requests.StartGame))
+		return srv.(CatanServer).StartGame(ctx, req.(*models.StartGameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_BuildSettlementAndRoad_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.BuildSettlementAndRoad)
+	in := new(models.BuildSettlementAndRoadRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -498,13 +497,13 @@ func _Catan_BuildSettlementAndRoad_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/pb.Catan/BuildSettlementAndRoad",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).BuildSettlementAndRoad(ctx, req.(*requests.BuildSettlementAndRoad))
+		return srv.(CatanServer).BuildSettlementAndRoad(ctx, req.(*models.BuildSettlementAndRoadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_RollDices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.RollDices)
+	in := new(models.RollDicesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -516,13 +515,13 @@ func _Catan_RollDices_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/pb.Catan/RollDices",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).RollDices(ctx, req.(*requests.RollDices))
+		return srv.(CatanServer).RollDices(ctx, req.(*models.RollDicesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_DiscardResourceCards_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.DiscardResourceCards)
+	in := new(models.DiscardResourceCardsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -534,13 +533,13 @@ func _Catan_DiscardResourceCards_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/pb.Catan/DiscardResourceCards",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).DiscardResourceCards(ctx, req.(*requests.DiscardResourceCards))
+		return srv.(CatanServer).DiscardResourceCards(ctx, req.(*models.DiscardResourceCardsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_MoveRobber_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.MoveRobber)
+	in := new(models.MoveRobberRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -552,13 +551,13 @@ func _Catan_MoveRobber_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/pb.Catan/MoveRobber",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).MoveRobber(ctx, req.(*requests.MoveRobber))
+		return srv.(CatanServer).MoveRobber(ctx, req.(*models.MoveRobberRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_EndTurn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.EndTurn)
+	in := new(models.EndTurnRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -570,13 +569,13 @@ func _Catan_EndTurn_Handler(srv interface{}, ctx context.Context, dec func(inter
 		FullMethod: "/pb.Catan/EndTurn",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).EndTurn(ctx, req.(*requests.EndTurn))
+		return srv.(CatanServer).EndTurn(ctx, req.(*models.EndTurnRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_BuildSettlement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.BuildSettlement)
+	in := new(models.BuildSettlementRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -588,13 +587,13 @@ func _Catan_BuildSettlement_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/pb.Catan/BuildSettlement",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).BuildSettlement(ctx, req.(*requests.BuildSettlement))
+		return srv.(CatanServer).BuildSettlement(ctx, req.(*models.BuildSettlementRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_BuildRoad_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.BuildRoad)
+	in := new(models.BuildRoadRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -606,13 +605,13 @@ func _Catan_BuildRoad_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/pb.Catan/BuildRoad",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).BuildRoad(ctx, req.(*requests.BuildRoad))
+		return srv.(CatanServer).BuildRoad(ctx, req.(*models.BuildRoadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_UpgradeCity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.UpgradeCity)
+	in := new(models.UpgradeCityRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -624,13 +623,13 @@ func _Catan_UpgradeCity_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/pb.Catan/UpgradeCity",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).UpgradeCity(ctx, req.(*requests.UpgradeCity))
+		return srv.(CatanServer).UpgradeCity(ctx, req.(*models.UpgradeCityRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_BuyDevelopmentCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.BuyDevelopmentCard)
+	in := new(models.BuyDevelopmentCardRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -642,13 +641,13 @@ func _Catan_BuyDevelopmentCard_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/pb.Catan/BuyDevelopmentCard",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).BuyDevelopmentCard(ctx, req.(*requests.BuyDevelopmentCard))
+		return srv.(CatanServer).BuyDevelopmentCard(ctx, req.(*models.BuyDevelopmentCardRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_ToggleResourceCards_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.ToggleResourceCards)
+	in := new(models.ToggleResourceCardsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -660,13 +659,13 @@ func _Catan_ToggleResourceCards_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/pb.Catan/ToggleResourceCards",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).ToggleResourceCards(ctx, req.(*requests.ToggleResourceCards))
+		return srv.(CatanServer).ToggleResourceCards(ctx, req.(*models.ToggleResourceCardsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_MaritimeTrade_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.MaritimeTrade)
+	in := new(models.MaritimeTradeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -678,13 +677,13 @@ func _Catan_MaritimeTrade_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/pb.Catan/MaritimeTrade",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).MaritimeTrade(ctx, req.(*requests.MaritimeTrade))
+		return srv.(CatanServer).MaritimeTrade(ctx, req.(*models.MaritimeTradeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_SendTradeOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.SendTradeOffer)
+	in := new(models.SendTradeOfferRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -696,13 +695,13 @@ func _Catan_SendTradeOffer_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/pb.Catan/SendTradeOffer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).SendTradeOffer(ctx, req.(*requests.SendTradeOffer))
+		return srv.(CatanServer).SendTradeOffer(ctx, req.(*models.SendTradeOfferRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_ConfirmTradeOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.ConfirmTradeOffer)
+	in := new(models.ConfirmTradeOfferRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -714,13 +713,13 @@ func _Catan_ConfirmTradeOffer_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/pb.Catan/ConfirmTradeOffer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).ConfirmTradeOffer(ctx, req.(*requests.ConfirmTradeOffer))
+		return srv.(CatanServer).ConfirmTradeOffer(ctx, req.(*models.ConfirmTradeOfferRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_CancelTradeOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.CancelTradeOffer)
+	in := new(models.CancelTradeOfferRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -732,13 +731,13 @@ func _Catan_CancelTradeOffer_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/pb.Catan/CancelTradeOffer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).CancelTradeOffer(ctx, req.(*requests.CancelTradeOffer))
+		return srv.(CatanServer).CancelTradeOffer(ctx, req.(*models.CancelTradeOfferRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_PlayKnightCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.PlayKnightCard)
+	in := new(models.PlayKnightCardRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -750,13 +749,13 @@ func _Catan_PlayKnightCard_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/pb.Catan/PlayKnightCard",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).PlayKnightCard(ctx, req.(*requests.PlayKnightCard))
+		return srv.(CatanServer).PlayKnightCard(ctx, req.(*models.PlayKnightCardRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_PlayRoadBuildingCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.PlayRoadBuildingCard)
+	in := new(models.PlayRoadBuildingCardRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -768,13 +767,13 @@ func _Catan_PlayRoadBuildingCard_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/pb.Catan/PlayRoadBuildingCard",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).PlayRoadBuildingCard(ctx, req.(*requests.PlayRoadBuildingCard))
+		return srv.(CatanServer).PlayRoadBuildingCard(ctx, req.(*models.PlayRoadBuildingCardRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_PlayYearOfPlentyCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.PlayYearOfPlentyCard)
+	in := new(models.PlayYearOfPlentyCardRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -786,13 +785,13 @@ func _Catan_PlayYearOfPlentyCard_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/pb.Catan/PlayYearOfPlentyCard",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).PlayYearOfPlentyCard(ctx, req.(*requests.PlayYearOfPlentyCard))
+		return srv.(CatanServer).PlayYearOfPlentyCard(ctx, req.(*models.PlayYearOfPlentyCardRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_PlayMonopolyCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.PlayMonopolyCard)
+	in := new(models.PlayMonopolyCardRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -804,13 +803,13 @@ func _Catan_PlayMonopolyCard_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/pb.Catan/PlayMonopolyCard",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).PlayMonopolyCard(ctx, req.(*requests.PlayMonopolyCard))
+		return srv.(CatanServer).PlayMonopolyCard(ctx, req.(*models.PlayMonopolyCardRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Catan_PlayVictoryPointCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(requests.PlayVictoryPointCard)
+	in := new(models.PlayVictoryPointCardRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -822,7 +821,7 @@ func _Catan_PlayVictoryPointCard_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/pb.Catan/PlayVictoryPointCard",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatanServer).PlayVictoryPointCard(ctx, req.(*requests.PlayVictoryPointCard))
+		return srv.(CatanServer).PlayVictoryPointCard(ctx, req.(*models.PlayVictoryPointCardRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

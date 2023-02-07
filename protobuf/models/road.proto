@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+import "protobuf/models/path.proto";
+
+message Road {
+    string ID = 1;
+    Path Path = 2;
+}

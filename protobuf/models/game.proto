@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+message Game {
+    string ID = 1;
+    int32 PlayerQuantity = 2;
+    string Status = 3;
+}

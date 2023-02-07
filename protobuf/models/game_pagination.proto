@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+import "protobuf/models/game.proto";
+
+message GamePagination {
+    int32 Total = 1;
+    repeated Game Data = 2;
+}

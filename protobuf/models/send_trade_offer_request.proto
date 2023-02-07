@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+message SendTradeOfferRequest {
+    string GameID = 1;
+    string UserID = 2;
+    string PlayerID = 3;
+}
