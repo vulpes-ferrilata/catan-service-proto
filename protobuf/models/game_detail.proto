@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+import "protobuf/models/player.proto";
+import "protobuf/models/dice.proto";
+import "protobuf/models/achievement.proto";
+import "protobuf/models/resource_card.proto";
+import "protobuf/models/development_card.proto";
+import "protobuf/models/terrain.proto";
+import "protobuf/models/land.proto";
+import "protobuf/models/path.proto";
+
+message GameDetail {
+    string ID = 1;
+    string Status = 2;
+    string Phase = 3;
+    int32 Turn = 4;
+    Player ActivePlayer = 5;
+    repeated Player Players = 6;
+    repeated Dice Dices = 7;
+    repeated Achievement Achievements = 8;
+    repeated ResourceCard ResourceCards = 9;
+    repeated DevelopmentCard DevelopmentCards = 10;
+    repeated Terrain Terrains = 11;
+    repeated Land Lands = 12;
+    repeated Path Paths = 13;
+}

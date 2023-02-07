@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+message MaritimeTradeRequest {
+    string GameID = 1;
+    string UserID = 2;
+    string ResourceCardType = 3;
+    string DemandingResourceCardType = 4;
+}

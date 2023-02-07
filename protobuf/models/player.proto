@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+import "protobuf/models/achievement.proto";
+import "protobuf/models/resource_card.proto";
+import "protobuf/models/development_card.proto";
+import "protobuf/models/construction.proto";
+import "protobuf/models/road.proto";
+
+message Player {
+    string ID = 1;
+    string UserID = 2;
+    string Color = 3;
+    int32 TurnOrder = 4;
+    bool ReceivedOffer = 5;
+    bool DiscardedResources = 6;
+    int32 Score = 7;
+    repeated Achievement Achievements = 8;
+    repeated ResourceCard ResourceCards = 9;
+    repeated DevelopmentCard DevelopmentCards = 10;
+    repeated Construction Constructions = 11;
+    repeated Road Roads = 12;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+message Dice {
+    string ID = 1;
+    int32 Number = 2;
+}

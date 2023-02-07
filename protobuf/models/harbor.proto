@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+message Harbor {
+    string ID = 1;
+    int32 Q = 2;
+    int32 R = 3;
+    string Type = 4;
+}

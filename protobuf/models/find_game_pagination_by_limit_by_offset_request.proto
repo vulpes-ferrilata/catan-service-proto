@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+message FindGamePaginationByLimitByOffsetRequest {
+    int32 Limit = 1;
+    int32 Offset = 2;
+}
