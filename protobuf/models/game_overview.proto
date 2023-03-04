@@ -4,8 +4,10 @@ option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
 
 package models;
 
-message Game {
+import "protobuf/models/player_overview.proto";
+
+message GameOverview {
     string ID = 1;
-    int32 PlayerQuantity = 2;
+    repeated PlayerOverview Players = 2;
     string Status = 3;
 }

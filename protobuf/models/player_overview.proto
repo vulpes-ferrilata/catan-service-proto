@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
+
+package models;
+
+message PlayerOverview {
+    string ID = 1;
+    string UserID = 2;
+    string Color = 3;
+    int32 Score = 4;
+}
