@@ -13,7 +13,7 @@ import "protobuf/models/terrain.proto";
 import "protobuf/models/land.proto";
 import "protobuf/models/path.proto";
 
-message GameDetail {
+message Game {
     string ID = 1;
     string Status = 2;
     string Phase = 3;

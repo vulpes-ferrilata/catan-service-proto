@@ -4,7 +4,7 @@ option go_package = "github.com/vulpes-ferrilata/catan-service-proto/pb/models";
 
 package models;
 
-message GetGameDetailByIDByUserIDRequest {
+message GetGameByIDByUserIDRequest {
     string GameID = 1;
     string UserID = 2;    
 }
